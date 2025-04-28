@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Наши Доктора</title>
+    <link rel="stylesheet" href="{% static 'appointments/css/index.css' %}">
+</head>
+<body>
+
+<h1 style="text-align:center;">Наши Доктора</h1>
+
+<div class="doctors-list" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+    {% for doctor in doctors %}
+        <div class="doctor-card" style="border: 1px solid #ccc; padding: 20px; border-radius: 10px; width: 200px; text-align: center;">
+            {% if doctor.photo %}
+            <img src="{{ doctor.photo.url }}" alt="{{ doctor.user.first_name }}" style="width:150px; height:150px; object-fit:cover; border-radius:50%;">
+            {% else %}
+            <img src="{% static 'appointments/images/artworks-XMFX3b070khZLK6F-USh5Rw-t500x500.jpg' %}" alt="Default Doctor" style="width:150px; height:150px; object-fit:cover; border-radius:50%;">
+            {% endif %}
+            <h3>{{ doctor.user.first_name }} {{ doctor.user.last_name }}</h3>
+            <p>{{ doctor.specialization }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
