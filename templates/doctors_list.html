@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Наши Доктора{% endblock %}
+
+{% block content %}
+<h1>Наши Доктора</h1>
+
+<form method="get" class="filter-form">
+    <input type="text" name="specialization" placeholder="Введите специализацию (например, хирург)" value="{{ request.GET.specialization }}">
+    <button type="submit">Фильтр</button>
+</form>
+
+<div class="doctor-list">
+    {% for doctor in doctors %}
+    {{ doctor.first_name }}
+        <div class="doctor-card">
+            <img src="{{ doctor.photo.url }}" alt="Фото доктора">
+            <h2>{{ doctor.first_name }} {{ doctor.last_name }}</h2>
+            <p><strong>Специализация:</strong> {{ doctor.specialization }}</p>
+            <a href="{% url 'doctor_detail' doctor.id %}" class="button">Подробнее</a>
+        </div>
+    {% empty %}
+        <p>Доктора не найдены.</p>
+    {% endfor %}
+</div>
+{% endblock %}

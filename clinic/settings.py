@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+LANGUAGE_CODE = 'ru'
+TIME_ZONE = 'Asia/Almaty'
 
 from pathlib import Path
 
@@ -33,6 +35,7 @@ STATICFILES_DIRS = [
 ]
 
 # Application definition
+AUTH_USER_MODEL = 'accounts.User'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -41,9 +44,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'appointments'
+    'appointments',
+    'accounts',
+    'dashboard',
 ]
-
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGOUT_REDIRECT_URL = 'login'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -108,9 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
 
 USE_I18N = True
 

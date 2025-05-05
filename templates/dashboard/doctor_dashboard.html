@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Личный кабинет доктора</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 3rem auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #e9f1fb;
+            margin-bottom: 10px;
+            padding: 1rem;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .appointment-info {
+            flex-grow: 1;
+        }
+        button {
+            background-color: #4963ce;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #354a9e;
+        }
+        .logout {
+            display: block;
+            text-align: center;
+            margin-top: 2rem;
+            text-decoration: none;
+            color: #4963ce;
+            font-weight: bold;
+        }
+        .logout:hover {
+            color: #354a9e;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Қош келдіңіз {{ user.first_name }}!</h1>
+        <h2>Сізге жазылғандар:</h2>
+
+        <ul>
+        {% for appointment in appointments %}
+
+                <li>
+                    <div class="appointment-info">
+                       Пациент: {{ appointment.patient.user.first_name }} {{ appointment.patient.user.last_name }}
+<br>
+                        Уақыты: {{ appointment.appointment_time }}
+                    </div>
+                    <form method="post" action="{% url 'complete_appointment' appointment.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Сеансты жабу</button>
+                    </form>
+                </li>
+            {% empty %}
+                <li>Сізге ешкім жазылмаған.</li>
+            {% endfor %}
+        </ul>
+
+        <a href="{% url 'logout' %}" class="logout">Жүйеден шығу</a>
+    </div>
+
+</body>
+</html>

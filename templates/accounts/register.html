@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="kz">
+<head>
+    <meta charset="UTF-8">
+    <title>Тіркелу</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f5f5f5; }
+        .form-container {
+            background-color: white; padding: 2rem; max-width: 400px; margin: 5rem auto;
+            border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 { text-align: center; }
+        input[type="text"], input[type="password"], input[type="email"] {
+            width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc;
+        }
+        button {
+            width: 100%; padding: 10px; background-color: #4CAF50; color: white;
+            border: none; border-radius: 5px; font-size: 16px;
+        }
+        .login-link { text-align: center; margin-top: 1rem; }
+        .error-message { color: red; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Тіркелу</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+                <p class="error-message">{{ form.non_field_errors }}</p>
+            {% endif %}
+
+            {{ form.username.label_tag }}<br>
+            {{ form.username }}
+            {% for error in form.username.errors %}
+                <p class="error-message">{{ error }}</p>
+            {% endfor %}
+
+            {{ form.first_name.label_tag }}<br>
+            {{ form.first_name }}
+            {% for error in form.first_name.errors %}
+                <p class="error-message">{{ error }}</p>
+            {% endfor %}
+
+            {{ form.last_name.label_tag }}<br>
+            {{ form.last_name }}
+            {% for error in form.last_name.errors %}
+                <p class="error-message">{{ error }}</p>
+            {% endfor %}
+
+            {{ form.password1.label_tag }}<br>
+            {{ form.password1 }}
+            {% for error in form.password1.errors %}
+                <p class="error-message">{{ error }}</p>
+            {% endfor %}
+
+            {{ form.password2.label_tag }}<br>
+            {{ form.password2 }}
+            {% for error in form.password2.errors %}
+                <p class="error-message">{{ error }}</p>
+            {% endfor %}
+
+            <button type="submit">Тіркелу</button>
+        </form>
+        <div class="login-link">
+           Есептік жазба бар ма ? <a href="{% url 'login' %}">Кіру</a>
+        </div>
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: red;">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>

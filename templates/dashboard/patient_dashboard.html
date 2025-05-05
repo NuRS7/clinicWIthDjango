@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Личный кабинет пациента</title>
+</head>
+<body>
+    <h1>Приветствуем, {{ user.first_name }}! Наш дорогой пациент.</h1>
+    <h2>Наши доктора:</h2>
+    <ul>
+        {% for doctor in doctors %}
+            <li>{{ doctor.first_name }} {{ doctor.last_name }} — {{ doctor.specialization }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'logout' %}">Выйти</a>
+</body>
+</html>
