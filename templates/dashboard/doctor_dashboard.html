@@ -78,6 +78,8 @@
                        Пациент: {{ appointment.patient.user.first_name }} {{ appointment.patient.user.last_name }}
 <br>
                         Уақыты: {{ appointment.appointment_time }}
+                        <br>
+                        Шағымы: {{ appointment.description }}
                     </div>
                     <form method="post" action="{% url 'complete_appointment' appointment.id %}">
                         {% csrf_token %}

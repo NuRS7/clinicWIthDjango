@@ -37,21 +37,22 @@
         <p style="text-align: center;">Мамандық: {{ doctor.specialization.name }}</p>
 
         <form method="post">
-            {% csrf_token %}
+    {% csrf_token %}
             <label>Күні мен уақыты:</label><br>
             <input type="datetime-local" name="appointment_time" required><br>
 
-            <label>Симптомдар / Жетістіктер:</label><br>
+            <label>Симптомдар :</label><br>
             <textarea name="description" rows="4" required></textarea><br>
 
-            <button type="submit">Жазылу</button>
+    <button type="submit">Жазылу</button>
         </form>
 
-        {% if messages %}
-            {% for message in messages %}
-                <p style="color: green; text-align: center;">{{ message }}</p>
-            {% endfor %}
-        {% endif %}
+{% for message in messages %}
+    <p style="color: {% if message.tags == 'error' %}red{% else %}green{% endif %}; text-align: center;">
+        {{ message }}
+    </p>
+{% endfor %}
+
     </div>
 
 </body>

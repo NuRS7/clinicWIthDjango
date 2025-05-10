@@ -21,11 +21,12 @@ def dashboard_view(request):
         try:
             doctor = Doctor.objects.get(user=user)
             appointments = Appointment.objects.filter(doctor=doctor)
+
         except Doctor.DoesNotExist:
             appointments = []
         return render(request, 'dashboard/doctor_dashboard.html', {
             'user': user,
-            'appointments': appointments
+            'appointments': appointments,
         })
 
     else:

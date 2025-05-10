@@ -31,7 +31,7 @@ class Appointment(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     appointment_time = models.DateTimeField()
-    description = models.TextField(default="Помог")
+    description = models.TextField(default="Проверка")
 
     def __str__(self):
-        return f"Запись: {self.patient} к {self.doctor} на {self.appointment_time}"
+        return f"Запись: {self.patient} к {self.doctor} на {self.appointment_time} {self.description}"

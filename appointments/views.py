@@ -93,10 +93,15 @@ def make_appointment(request, doctor_id):
         appointment_time = request.POST.get('appointment_time')
         description = request.POST.get('description')
 
-        # Создаём запись о приёме
+        try:
+            patient = request.user.patient
+        except Patient.DoesNotExist:
+            messages.error(request, 'Қате: сіздің аккаунтыңыз пациент ретінде тіркелмеген.')
+            return redirect('dashboard')
+
         Appointment.objects.create(
             doctor=doctor,
-            patient=request.user.patient,
+            patient=patient,
             appointment_time=appointment_time,
             description=description
         )
