@@ -15,7 +15,7 @@ def register_view(request):
             user.last_name = form.cleaned_data.get('last_name')
             user.is_patient = True  # Все новые пользователи — пациенты
             user.save()
-            messages.success(request, 'Регистрация успешна. Войдите в аккаунт.')
+            messages.success(request, 'Тіркелу сәтті өтті. Енді жеке кабинетке кіріңіз')
             return redirect('login')
     else:
         form = CustomUserCreationForm()
@@ -34,9 +34,9 @@ def login_view(request):
                 login(request, user)
                 return redirect('dashboard')  # Можно не писать, settings.py сам отправит
             else:
-                messages.error(request, 'Неверные данные для входа')
+                messages.error(request, 'Деректер дұрыс емес')
         else:
-            messages.error(request, 'Неверные данные для входа')
+            messages.error(request, 'Деректер дұрыс емес')
     else:
         form = AuthenticationForm()
     return render(request, 'accounts/login.html', {'form': form})
@@ -44,5 +44,5 @@ def login_view(request):
 @login_required
 def logout_view(request):
     logout(request)
-    messages.success(request, 'Вы вышли из аккаунта.')
+    messages.success(request, 'Сіз жеке кабинеттен шықтыңыз')
     return redirect('login')

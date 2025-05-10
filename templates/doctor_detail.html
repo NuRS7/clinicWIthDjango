@@ -14,12 +14,12 @@
 
     <section class="doctor-detail">
         <img src="{{ doctor.photo.url }}" alt="{{ doctor.first_name }} {{ doctor.last_name }}">
-        <p><strong>Специализация:</strong> {{ doctor.specialization }}</p>
-        <p><strong>Достижения:</strong> {{ doctor.achievements }}</p>
+        <p><strong>Мамандығы:</strong> {{ doctor.specialization }}</p>
+        <p><strong>Жетістіктері:</strong> {{ doctor.achievements }}</p>
     </section>
 
     <section class="appointment-form">
-        <h2>Записаться на приём</h2>
+        <h2>Доктарға жазылу</h2>
 
         {% if messages %}
             {% for message in messages %}
@@ -30,15 +30,15 @@
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn">Отправить заявку</button>
+            <button type="submit" class="btn">Жазылыға жіберу</button>
         </form>
 
-        <h3>Уже занятые часы:</h3>
+        <h3>Бос емес уақыттар</h3>
         <ul>
             {% for time in booked_times %}
                 <li>{{ time|date:"d.m.Y H:i" }}</li>
             {% empty %}
-                <li>Все часы свободны</li>
+                <li>Бос уақыттар</li>
             {% endfor %}
         </ul>
     </section>

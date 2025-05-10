@@ -55,7 +55,7 @@ def doctor_detail(request, doctor_id):
             # Проверяем, свободно ли время
             existing_appointment=Appointment.objects.filter(doctor=doctor, appointment_time=appointment_time).exists()
             if existing_appointment:
-                messages.error(request, 'Выбранное время уже занято. Пожалуйста, выберите другое время.')
+                messages.error(request, 'Таңдалған уақыт бос емес. Басқа уақытқа қойыңыз.')
             else:
                 # Создаем или находим пациента
                 patient, created=Patient.objects.get_or_create(
@@ -70,7 +70,7 @@ def doctor_detail(request, doctor_id):
                     appointment_time=appointment_time,
                     description=form.cleaned_data['description'],
                 )
-                messages.success(request, 'Запись успешно создана!')
+                messages.success(request, 'Жазылым сәтті аяқталды!')
                 return redirect('appointment_confirmation')
     else:
         form=AppointmentForm()

@@ -30,7 +30,7 @@ def dashboard_view(request):
         })
 
     else:
-        messages.error(request, "У вашей учетной записи не указана роль.")
+        messages.error(request, "Сізде кіруге рұқсат жоқ. ")
         return redirect('login')
 
 @require_POST
@@ -42,11 +42,11 @@ def complete_appointment(request, appointment_id):
         appointment = get_object_or_404(Appointment, id=appointment_id)
         if appointment.doctor.user == user:
             appointment.delete()
-            messages.success(request, 'Сеанс успешно завершён и запись удалена.')
+            messages.success(request, 'Сеанс сәтті аяқталды және жазылым бітті')
         else:
-            messages.error(request, 'Вы не можете удалять чужие записи.')
+            messages.error(request, 'Сіз біреудің сеансын өшіре алмайсыз')
     else:
-        messages.error(request, 'Только доктор может завершать сеансы.')
+        messages.error(request, 'Доктор ғана сеансты өшіре алады')
 
     return redirect('dashboard')
 
