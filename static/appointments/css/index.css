@@ -206,11 +206,11 @@
 }
 
 .u-section-2 .u-image-1 {
-  width: 309px;
-  height: 309px;
+  width: 300px;
+  height: 100%;
   background-image: url("../images/2photo.jpg");
-  background-position: 50% 50%;
-  margin: 92px auto 0;
+  background-position: 100%;
+  margin: 10px auto 0;
 }
 
 .u-section-2 .u-layout-cell-2 {
