@@ -27,14 +27,20 @@
 #         form = AppointmentForm()
 #
 #     return render(request, 'appointments/make_appointment.html', {'form': form, 'doctor': doctor})
-
-from django.shortcuts import render, get_object_or_404, redirect
-from .models import Doctor, Patient, Appointment
+from django.http import FileResponse, Http404
+from django.shortcuts import render, get_object_or_404
+from django.conf import settings
+from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
+from openpyxl import Workbook, load_workbook
+import os
+from .models import Patient, Appointment
 from .forms import AppointmentForm
-from django.utils import timezone
 from django.contrib import messages
 from .models import Doctor, Specialization
 from django.contrib.auth.decorators import login_required
+from .models import ContactRequest
+
 def home(request):
     return render(request, 'appointments/index.html')
 def doctors_list(request):
@@ -118,3 +124,64 @@ def doctors_by_specialization(request, spec_id):
         'doctors': doctors
     })
 
+
+
+
+
+import os
+from django.conf import settings
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import ContactRequest
+
+def contact(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        phone = request.POST.get("phone")
+
+        if name and phone:
+            ContactRequest.objects.create(name=name, phone=phone)
+            messages.success(request, "Сәтті жіберілді.")
+        else:
+            messages.error(request, "Барлық өрістерді толтырыңыз.")
+
+        return redirect('contact')  # URL name
+
+    return render(request, 'appointments/contact_form.html')
+
+# def contact(request):
+#     if request.method == "POST":
+#         name = request.POST.get("name")
+#         phone = request.POST.get("phone")
+#
+#         if not name or not phone:
+#             messages.error(request, "Барлық өрістерді толтырыңыз.")
+#             return redirect('/')
+#         os.makedirs(os.path.dirname(EXCEL_FILE), exist_ok=True)
+#
+#         try:
+#             if not os.path.exists(EXCEL_FILE):
+#                 wb = Workbook()
+#                 ws = wb.active
+#                 ws.append(["Аты-жөні", "Телефон нөмірі"])
+#             else:
+#                 wb = load_workbook(EXCEL_FILE)
+#                 ws = wb.active
+#
+#             ws.append([name, phone])
+#             wb.save(EXCEL_FILE)
+#
+#             messages.success(request, "Сәтті жіберілді. Деректер Excel-ге сақталды.")
+#         except Exception as e:
+#             messages.error(request, f"Қате: {e}")
+#
+#         return redirect('/')
+#
+#     return render(request, 'appointments/index.html')
+
+def download_exel(request):
+    file_path = os.path.join(settings.MEDIA_ROOT, 'contacts', 'contact_data.xlsx')
+    if os.path.exists(file_path):
+        return FileResponse(open(file_path, 'rb'), as_attachment=True, filename='contact_data.xlsx')
+    else:
+        raise Http404("Файл табылмады ")

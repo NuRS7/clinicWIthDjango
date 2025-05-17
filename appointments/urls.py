@@ -7,6 +7,8 @@ import appointments.views as views
 from django.conf.urls.static import static
 from django.conf import settings
 
+from appointments.views import download_exel
+
 urlpatterns = [
     path('', views.home, name='home'),  # Домашняя страница
     path('doctors/', views.doctors_list, name='doctors_list'),  # Список докторов
@@ -14,6 +16,9 @@ urlpatterns = [
     path('make_appointment/<int:doctor_id>/', views.make_appointment, name='make_appointment'),
     # Успешная запись
     path('doctors_by_specialization/<int:spec_id>/', views.doctors_by_specialization, name='doctors_by_specialization'),
+    path('contact', views.contact, name='contact'),
+    path('download_exel', download_exel, name = 'download_exel'),
+
 ]
 
 if settings.DEBUG:

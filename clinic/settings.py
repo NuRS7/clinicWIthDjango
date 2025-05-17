@@ -26,10 +26,11 @@ SECRET_KEY = 'django-insecure-+t6244rp@u)@di0#+cjx*yf7p5_u_6)!#mjbubn_(leo2psfzw
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+import os
 ALLOWED_HOSTS = []
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+
 STATICFILES_DIRS = [
     BASE_DIR / "static",  # Папка для обычных статики (в том числе images)
 ]

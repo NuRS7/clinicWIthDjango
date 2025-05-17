@@ -52,3 +52,4 @@ def complete_appointment(request, appointment_id):
 
 def list(request):
     return render(request, 'dashboard/index.html')
+

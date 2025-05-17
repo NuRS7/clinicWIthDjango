@@ -35,3 +35,11 @@ class Appointment(models.Model):
 
     def __str__(self):
         return f"Запись: {self.patient} к {self.doctor} на {self.appointment_time} {self.description}"
+
+
+class ContactRequest(models.Model):
+    name = models.CharField("Аты-жөні", max_length=100)
+    phone = models.CharField("Телефон нөмірі", max_length=20)
+    created_at = models.DateTimeField("Жіберілген уақыты", auto_now_add=True)
+    def __str__(self):
+        return f"{self.name} - {self.phone}"

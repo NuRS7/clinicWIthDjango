@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="en"><head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,11 +12,11 @@
     <script class="u-script" type="text/javascript" src="../../static/appointments/js/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="../../static/appointments/js/nicepage.js" defer=""></script>
 
-    
-    
-    
-    
-    
+
+
+
+
+
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
     <script type="application/ld+json">{
@@ -27,7 +28,7 @@
     <meta property="og:title" content="Home">
     <meta property="og:type" content="website">
   <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
-  <body data-home-page="Home.html" data-home-page-title="Home" data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="header"><nav class="u-menu u-menu-one-level u-offcanvas u-menu-1">
+<body data-home-page="Home.html" data-home-page-title="Home" data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="header"><nav class="u-menu u-menu-one-level u-offcanvas u-menu-1">
         <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
           <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-hamburger-link u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
             <svg class="u-svg-link" viewBox="0 0 24 24"><use xlink:href="#menu-hamburger"></use></svg>
@@ -196,67 +197,87 @@
             </div>
           </div>
         </div>
-      </div>{#    </section>#}
-<section class="contact-section" id="contact" style="background-color: #007BFF; padding: 50px 20px; color: white;">
-  <h2 class="contact-title" style="text-align: center; margin-bottom: 30px;">Бізге хабарласыңыз</h2>
+      </div>
+    </section>
 
-  <form action="" method="post" class="contact-form" id="contact-form" style="max-width: 500px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
 
-    <input
-      type="text"
-      placeholder="Сіздің аты-жөніңіз"
-      id="contact-name"
-      name="name"
-      class="contact-input"
-      required
-      style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; color: black;"
-    >
+{#<section class="contact-section" id="contact" style="background-color: #007BFF; padding: 50px 20px; color: white;">#}
+{#  <h2 class="contact-title" style="text-align: center; margin-bottom: 30px;">Бізге хабарласыңыз</h2>#}
+{##}
+{#  <div class="form-container" style="max-width: 500px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); color: black;">#}
+{##}
+{#    {% if messages %}#}
+{#      <ul class="messages" style="margin-bottom: 20px; padding-left: 0;">#}
+{#        {% for message in messages %}#}
+{#          <li style="list-style: none; text-align: center; color: {% if message.tags == 'success' %}green{% else %}red{% endif %};">#}
+{#            {{ message }}#}
+{#          </li>#}
+{#        {% endfor %}#}
+{#      </ul>#}
+{#    {% endif %}#}
+{##}
+{#    <form action="" method="post">#}
+{#      {% csrf_token %}#}
+{##}
+{#      <input#}
+{#        type="text"#}
+{#        name="name"#}
+{#        placeholder="Сіздің аты-жөніңіз"#}
+{#        required#}
+{#        style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;"#}
+{#      >#}
+{##}
+{#      <input#}
+{#        type="tel"#}
+{#        name="phone"#}
+{#        placeholder="Сіздің телефон нөміріңіз"#}
+{#        required#}
+{#        style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px;"#}
+{#      >#}
+{##}
+{#      <div style="text-align: center;">#}
+{#        <button#}
+{#          type="submit"#}
+{#          style="padding: 12px 30px; background-color: #007BFF; border: none; color: white; font-size: 16px; border-radius: 5px; cursor: pointer;"#}
+{#          onmouseover="this.style.backgroundColor='#0056b3';"#}
+{#          onmouseout="this.style.backgroundColor='#007BFF';"#}
+{#        >#}
+{#          Өтінішті жолдау#}
+{#        </button>#}
+{#      </div>#}
+{#    </form>#}
+{#  </div>#}
+{#</section>#}
+        <section>
+<footer style="background-color:#0e84f2; padding: 0; margin: 0;">
+  <div style="width: 100vw; height: 100vh; position: relative;">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1843.311537901265!2d68.30005248378633!3d43.29070320472234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4200c26359132241%3A0xdc1feb36390d230f!2z0JzQtdC20LTRg9C90LDRgNC-0LTQvdGL0Lkg0JrQsNC30LDRhdGB0LrQvi3QotGD0YDQtdGG0LrQuNC5INCj0L3QuNCy0LXRgNGB0LjRgtC10YIg0LjQvC4g0KXQvtC00LbQsCDQkNGF0LzQtdGCINCv0YHQsNGD0Lg!5e1!3m2!1sru!2skz!4v1747496655946!5m2!1sru!2skz"
+      width="100%"
+      height="100%"
+      style="border:0; position: absolute; top: 0; left: 0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
 
-    <input
-      type="tel"
-      placeholder="Сіздің телефон нөміріңіз"
-      id="contact-phone"
-      name="phone"
-      class="contact-input"
-      required
-      style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; color: black;"
-    >
-
-    <div class="form-group" style="text-align: center;">
-      <button
-        type="submit"
-        class="contact-button"
-        style="padding: 12px 30px; background-color: #007BFF; border: none; color: white; font-size: 16px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;"
-        onmouseover="this.style.backgroundColor='#0056b3';"
-        onmouseout="this.style.backgroundColor='#007BFF';"
-      >
-        Өтінішті жолдау
-      </button>
+    <!-- Квадратик слева внизу -->
+    <div style="position: absolute; bottom: 20px; left: 20px; background-color: white; padding: 15px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); max-width: 250px;">
+        <a href="http://127.0.0.1:8000/contact"><h4 style="margin: 0 0 5px 0; color: #0e84f2;">Байланыс</h4></a>
+      <p style="margin: 0; color: #333; font-size: 14px;">
+        +7 (701) 123-4567<br>
+        info@turkmed.kz<br>
+        Б.Саттарханов 29
+      </p>
     </div>
 
-    <div class="form-success" style="display: none; text-align: center; margin-top: 15px; color: green;">
-      Сәтті жіберілді.
-    </div>
+    <!-- Центрированный копирайт -->
+    <p style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); color: white; background-color: rgba(0,0,0,0.5); padding: 5px 15px; border-radius: 5px;">
+      &copy; 2025 Turkistan Medical Center.
+    </p>
+  </div>
+</footer>
 
-    <div class="form-error" style="display: none; text-align: center; margin-top: 15px; color: red;">
-      Жіберілмеді, қайтадан қайталап көріңіз.
-    </div>
-
-    <input type="hidden" value="" name="recaptchaResponse">
-  </form>
-    <style>
-.contact-input::placeholder {
-  color: black;
-}
-</style>
-</section>
-
-
-
-
-    
-    
-    
-
-  
-</body></html>
+        </section>
+</body>
+</html>

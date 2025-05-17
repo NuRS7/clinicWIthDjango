@@ -1,0 +1,49 @@
+{% load static %}
+
+<section class="contact-section" id="contact" style="background-color: #007BFF; width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; color: white; margin: 0; padding: 0;">
+  <div class="form-container" style="width: 100%; max-width: 500px; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); color: black; box-sizing: border-box;">
+
+    <h2 class="contact-title" style="text-align: center; margin-bottom: 30px;">Бізге хабарласыңыз</h2>
+
+    {% if messages %}
+      <ul class="messages" style="margin-bottom: 20px; padding-left: 0;">
+        {% for message in messages %}
+          <li style="list-style: none; text-align: center; color: {% if message.tags == 'success' %}green{% else %}red{% endif %};">
+            {{ message }}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <form action="" method="post">
+      {% csrf_token %}
+
+      <input
+        type="text"
+        name="name"
+        placeholder="Сіздің аты-жөніңіз"
+        required
+        style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;"
+      >
+
+      <input
+        type="tel"
+        name="phone"
+        placeholder="Сіздің телефон нөміріңіз"
+        required
+        style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px;"
+      >
+
+      <div style="text-align: center;">
+        <button
+          type="submit"
+          style="padding: 12px 30px; background-color: #007BFF; border: none; color: white; font-size: 16px; border-radius: 5px; cursor: pointer;"
+          onmouseover="this.style.backgroundColor='#0056b3';"
+          onmouseout="this.style.backgroundColor='#007BFF';"
+        >
+          Өтінішті жолдау
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
